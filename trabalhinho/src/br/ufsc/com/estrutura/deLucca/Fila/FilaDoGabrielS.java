@@ -112,4 +112,28 @@ public class FilaDoGabrielS {
             }
         }
     }
+
+    public void removeDaPosicao(int posicao){
+        if (posicao > getQuantidade() && posicao < 0){
+            System.out.println("Digite a posição correta");
+        } else {
+            int contador = 1;
+            if (posicao == 1 && getQuantidade() > 0){
+                setPrimeiro(getPrimeiro().getProximo());
+            }
+            Nodo nodoProcurado = getPrimeiro();
+            while (contador < posicao -1){
+                nodoProcurado = nodoProcurado.getProximo();
+                contador++;
+            }
+            nodoProcurado.setProximo(null);
+            if (posicao == getQuantidade()){
+                setUltimo(nodoProcurado);
+            }
+            quantidade--;
+
+        }
+
+    }
+
 }

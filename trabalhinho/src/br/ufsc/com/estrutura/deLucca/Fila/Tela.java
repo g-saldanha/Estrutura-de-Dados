@@ -28,7 +28,8 @@ public class Tela {
                             "2 -> Inserir Numero no Fim da Fila\n" +
                             "3 -> Inserir Numero depois de outro na Fila\n" +
                             "4 -> Inserir Numero antes de outro na Fila\n" +
-                            "5 -> Mostrar quantidade de itens na Fila\n"
+                            "5 -> Remover Numero da Fila\n" +
+                            "6 -> Mostrar quantidade de itens na Fila\n"
             );
             opcao = this.scanner.nextInt();
             switch (opcao){
@@ -44,8 +45,11 @@ public class Tela {
                 case 4:
                     menuInserirAntes();
                     break;
-                case 5:
+                case 6:
                     mostrarTodos();
+                    break;
+                case 5:
+                    menuRemoveDaLista();
                     break;
                 default:
                     menu();
@@ -56,11 +60,24 @@ public class Tela {
 
     }
 
+    private void menuRemoveDaLista() {
+        if (filaDoGabrielS.ehVazia()){
+            System.out.println("Não existem itens na Lista");
+        } else {
+            System.out.println("Posições disponíveis");
+            numerosLista();
+            System.out.println("\nDigite a posição que deseja remover");
+            filaDoGabrielS.removeDaPosicao(scanner.nextInt());
+        }
+        menu();
+
+    }
+
     private void mostrarTodos() {
         System.out.println("Lista de Numeros encadeada");
         Nodo nodoPercorrido = filaDoGabrielS.getPrimeiro();
         if (nodoPercorrido.equals(null)){
-            System.out.println("Não há itens na lista");
+            System.out.println("Não há itens na Fila");
         } else {
             while (nodoPercorrido != null) {
                 System.out.print("|" + nodoPercorrido.getNumero().getNumero() + "|*|->");
@@ -78,7 +95,7 @@ public class Tela {
     }
 
     private void menuInserirAntes() {
-        if (filaDoGabrielS.getQuantidade() == 0){
+        if (filaDoGabrielS.ehVazia()){
             System.out.println("Não existem elementos Numero na Lista");
         }else {
             System.out.println("Digite um Numero para ser inserido antes de outro na Lista");
@@ -92,7 +109,7 @@ public class Tela {
     }
 
     private void menuInserirDepois() {
-        if (filaDoGabrielS.getQuantidade() == 0) {
+        if (filaDoGabrielS.ehVazia()) {
             System.out.println("Não existem elementos Numero na Lista");
         } else {
             System.out.println("Digite um Numero para ser inserido depois de outro na Lista");
@@ -107,16 +124,18 @@ public class Tela {
 
 
     private void menuInserirFinal() {
-        System.out.println("Digite um Numero para ser inserido no final da Lista");
+        System.out.println("Digite um Numero para ser inserido no final da Fila");
         filaDoGabrielS.insereFinal(scanner.nextInt());
         menu();
     }
 
     private void menuInserirInicio() {
-        System.out.println("Digite um Numero para ser inserido no inicio da lista");
+        System.out.println("Digite um Numero para ser inserido no inicio da Fila");
         filaDoGabrielS.ínsereInicio(scanner.nextInt());
         menu();
     }
+
+
 
 
 
