@@ -49,7 +49,7 @@ public class PilhaDoGabrielS {
             this.setUltimo(novoNodo);
         }
         novoNodo.setProximo(this.getPrimeiro());
-        this. setPrimeiro(novoNodo);
+        this.setPrimeiro(novoNodo);
         this.setQuantidade(getQuantidade() + 1);
     }
 
