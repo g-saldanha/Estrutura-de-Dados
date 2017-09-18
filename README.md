@@ -31,4 +31,4 @@ Criar uma classe simples que instancie 1 objeto ListaDuplamenteEncadeada e insir
 
 Link:
 
-[Lista Duplamente Encadeada](http://github.com/g-saldanha/Estrutura-de-Dados/trabalhinho2/src/ListaDuplamenteEncadeada.java)
+[Lista Duplamente Encadeada](https://github.com/g-saldanha/Estrutura-de-Dados/blob/master/trabalhinho2/src/ListaDuplamenteEncadeada.java)
