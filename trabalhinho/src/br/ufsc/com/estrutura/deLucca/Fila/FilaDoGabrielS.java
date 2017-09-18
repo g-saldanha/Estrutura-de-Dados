@@ -63,7 +63,7 @@ public class FilaDoGabrielS {
         if (posicao <= getQuantidade() && posicao > 0){
             int contador = 1;
             Nodo nodoProcurado = getPrimeiro();
-            while (contador != posicao) {
+            while (contador < posicao) {
                 nodoProcurado = nodoProcurado.getProximo();
                 contador++;
             }
@@ -74,22 +74,26 @@ public class FilaDoGabrielS {
         }
     }
 
-    public void insereDepoisDe(int posicao, int numero){
-        if (posicao > getQuantidade() && posicao < 0){
-            System.out.println("Digite uma posição correta");
-        }
-        else{
-            Nodo novoNodo = new Nodo(new Numero(numero));
-            int contador = 1;
+    public void insereDepoisDe(int referencia, int numero){
+//        if (referencia > getQuantidade() && referencia < 0){
+//            System.out.println("Digite uma referencia");
+//        }
+//        else
+
             Nodo nodoProcurado = getPrimeiro();
-            while (contador != posicao) {
+            while (nodoProcurado.getNumero().getNumero() != referencia) {
                 nodoProcurado = nodoProcurado.getProximo();
-                contador++;
             }
-            novoNodo.setProximo(nodoProcurado.getProximo());
-            nodoProcurado.setProximo(novoNodo);
-            setQuantidade(getQuantidade() + 1);
-        }
+            if (nodoProcurado.equals(null)){
+                System.out.println("Não Encontrei seu numero");
+            } else {
+                Nodo nodoNovo = new Nodo(new Numero(numero));
+                nodoNovo.setProximo(nodoProcurado.getProximo());
+                nodoProcurado.setProximo(nodoNovo);
+                setQuantidade(getQuantidade() +1);
+            }
+
+//        }
     }
 
     public void insereAntesDe(int posicao, int numero){
@@ -137,3 +141,4 @@ public class FilaDoGabrielS {
     }
 
 }
+

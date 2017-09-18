@@ -114,8 +114,7 @@ public class Tela {
         } else {
             System.out.println("Digite um Numero para ser inserido depois de outro na Lista");
             int numero = scanner.nextInt();
-            System.out.println("Digite a posição desejada");
-            numerosLista();
+            System.out.println("Digite a referencia desejada");
             int posicao = scanner.nextInt();
             filaDoGabrielS.insereDepoisDe(posicao, numero);
         }
