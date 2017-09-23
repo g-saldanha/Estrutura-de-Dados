@@ -45,16 +45,14 @@ public class ListaDuplamenteEncadeada {
 
     public void inserirAntesDoAtual(Dado dado){
         No novo = new No(dado);
-        novo.setSucessor(getAtual());
-        if (getAtual().getAntecessor().equals(null)){
-            getAtual().setAntecessor(getUltimo());
-        }
-        getAtual().getAntecessor().setSucessor(novo);
-        novo.setAntecessor(getAtual().getAntecessor());
-        getAtual().setAntecessor(novo);
         if (getAtual().equals(getPrimeiro())){
+            novo.setAntecessor(getUltimo());
             setPrimeiro(novo);
         }
+        novo.setAntecessor(getAtual().getAntecessor());
+        novo.setSucessor(getAtual());
+        getAtual().getAntecessor().setSucessor(novo);
+        getAtual().setAntecessor(novo);
         setQuantidade(getQuantidade()+1);
     }
 
@@ -71,22 +69,24 @@ public class ListaDuplamenteEncadeada {
     }
 
     public void excluirAtual(){
-        getAtual().getAntecessor().setSucessor(getAtual().getSucessor());
-        getAtual().getSucessor().setAntecessor(getAtual().getAntecessor());
-        setQuantidade(getQuantidade()-1);
+        if (getQuantidade() != 0) {
+            getAtual().getAntecessor().setSucessor(getAtual().getSucessor());
+            getAtual().getSucessor().setAntecessor(getAtual().getAntecessor());
+            setQuantidade(getQuantidade() - 1);
+        }
     }
 
-    public boolean buscar(Dado dado){
+    public Object buscar(Object dado){
         No buscador = getPrimeiro();
         int i = 1;
-        while (!buscador.getDado().getDado().equals(dado.getDado()) || i <= getQuantidade()){
+        while (!buscador.getDado().getDado().equals(dado) && i <= getQuantidade()){
             buscador = buscador.getSucessor();
             i++;
         }
-        if (dado.equals(buscador.getDado())){
-            return true;
+        if (dado.equals(buscador.getDado().getDado())){
+            return buscador.getDado().getDado();
         }
-        return false;
+        return null;
     }
 
     public void avancarKPassos(int k){
@@ -115,10 +115,13 @@ public class ListaDuplamenteEncadeada {
 
     public void inserirDado(Dado dado){
         No novo = new No(dado);
-        novo.setAntecessor(getUltimo());
-        if (getUltimo() != null) {
-            getUltimo().setSucessor(novo);
+        if (getQuantidade() == 0){
+            setPrimeiro(novo);
+            setUltimo(novo);
+            novo.setSucessor(getUltimo());
+            novo.setAntecessor(getPrimeiro());
         }
+        novo.setAntecessor(getUltimo());
         setUltimo(novo);
         setAtual(novo);
         setQuantidade(getQuantidade()+1);
