@@ -46,9 +46,13 @@ public class ListaDuplamenteEncadeada {
     public void inserirAntesDoAtual(Dado dado){
         No novo = new No(dado);
         novo.setSucessor(getAtual());
+        if (getAtual().getAntecessor().equals(null)){
+            getAtual().setAntecessor(getUltimo());
+        }
+        getAtual().getAntecessor().setSucessor(novo);
         novo.setAntecessor(getAtual().getAntecessor());
         getAtual().setAntecessor(novo);
-        if (getAtual() == getPrimeiro()){
+        if (getAtual().equals(getPrimeiro())){
             setPrimeiro(novo);
         }
         setQuantidade(getQuantidade()+1);
@@ -58,7 +62,9 @@ public class ListaDuplamenteEncadeada {
         No novo = new No(dado);
         if (getAtual().getSucessor() != null) {
             novo.setSucessor(getAtual().getSucessor());
+            getAtual().getSucessor().setAntecessor(novo);
         }
+        getAtual().setSucessor(novo);
         novo.setAntecessor(getAtual());
         if (getAtual().equals(getUltimo())) setUltimo(novo);
         setQuantidade(getQuantidade()+1);
@@ -114,6 +120,7 @@ public class ListaDuplamenteEncadeada {
             getUltimo().setSucessor(novo);
         }
         setUltimo(novo);
+        setAtual(novo);
         setQuantidade(getQuantidade()+1);
     }
 
