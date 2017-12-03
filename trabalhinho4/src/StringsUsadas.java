@@ -1,7 +1,8 @@
 public class StringsUsadas {
-
+//	Estou gerando um construtor vazio nessa classe por conveniência, devido ao java classificar como erro Major uma classe que não tem construtor
 	public StringsUsadas() {
 	}
+
 	//	Classe onde estão todas as palavras que vão ser usadas no trabalhinho 4
 	public static final String POSICAO = "Posição";
 	public static final String CODIGO = "Código";
