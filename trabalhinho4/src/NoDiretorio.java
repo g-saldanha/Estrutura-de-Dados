@@ -4,12 +4,14 @@ public class NoDiretorio {
 	private int posicao;
 	private NoDiretorio sucessor;
 
+//	Classe construtora que vai receber os parâmetros
 	public NoDiretorio(int codigo, int posicao) {
 		this.codigo = codigo;
 		this.posicao = posicao;
 		sucessor = null;
 	}
 
+//	Getters e Setters
 	public int getCodigo() {
 		return codigo;
 	}

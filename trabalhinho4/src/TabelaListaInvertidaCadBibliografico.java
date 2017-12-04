@@ -11,6 +11,8 @@ public class TabelaListaInvertidaCadBibliografico {
 //	Classe construtora que vai formar a tabela
 	public TabelaListaInvertidaCadBibliografico() {
 		this.cadastrosBibliograficos = new String[50][7];
+		this.editora = new DiretorioEditora();
+		areaTematica = new DiretorioAreaTematica();
 
 //		Aqui o construtor vai popular a tabela com o cabeçalho dos itens, cada coluna com o seu nome no cabeçalho
 		cadastrosBibliograficos[0][0] = StringsUsadas.POSICAO;
@@ -35,7 +37,7 @@ public class TabelaListaInvertidaCadBibliografico {
 		cadastrosBibliograficos[ultimaPosicao][4] = editora;
 		cadastrosBibliograficos[ultimaPosicao][5] = "" + publicacao;
 		cadastrosBibliograficos[ultimaPosicao][6] = areaTematica;
-//		this.editora.incluirEditora(e);
+		this.editora.incluirEditora(editora, ultimaPosicao, codigo);
 //		this.areaTematica.incluirArea(areaTematica);
 	}
 
@@ -74,5 +76,19 @@ public class TabelaListaInvertidaCadBibliografico {
 		this.ultimaPosicao = ultimaPosicao;
 	}
 
+	public DiretorioEditora getEditora() {
+		return editora;
+	}
 
+	public void setEditora(DiretorioEditora editora) {
+		this.editora = editora;
+	}
+
+	public DiretorioAreaTematica getAreaTematica() {
+		return areaTematica;
+	}
+
+	public void setAreaTematica(DiretorioAreaTematica areaTematica) {
+		this.areaTematica = areaTematica;
+	}
 }
