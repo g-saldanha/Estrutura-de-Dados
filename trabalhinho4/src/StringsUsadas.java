@@ -1,5 +1,9 @@
 public class StringsUsadas {
-//	Estou gerando um construtor vazio nessa classe por conveniência, devido ao java classificar como erro Major uma classe que não tem construtor
+
+
+
+
+	//	Estou gerando um construtor vazio nessa classe por conveniência, devido ao java classificar como erro Major uma classe que não tem construtor
 	public StringsUsadas() {
 	}
 
@@ -11,5 +15,7 @@ public class StringsUsadas {
 	public static final String EDITORA = "Editora";
 	public static final String PUBLICACAO = "Publicação";
 	public static final String AREA_TEMATICA = "Área Temática";
+	public static final String DIRETORIO_EDITORA = "Diretório " + StringsUsadas.EDITORA;
+	public static final String DIRETORIO_AREA_TEMATICA = "Diretório " + StringsUsadas.AREA_TEMATICA;
 
 }

@@ -8,7 +8,7 @@ public class TabelaListaInvertidaCadBibliografico {
 	private DiretorioAreaTematica areaTematica;
 //	Fim dos atributos
 
-//	Classe construtora que vai formar a tabela
+//	Método construtor que vai formar a tabela
 	public TabelaListaInvertidaCadBibliografico() {
 		this.cadastrosBibliograficos = new String[50][7];
 		this.editora = new DiretorioEditora();
@@ -27,7 +27,24 @@ public class TabelaListaInvertidaCadBibliografico {
 		ultimaPosicao = 0;
 	}
 
-//	Classe que vai incluir dados, ela vai pegar a última posição e incrementar, em seguida irá usar os parâmetros para inserir no array da tabela os dados.
+//	Método de Busca simples conforme pedido, vai receber o parâmetro coluna e palavra a ser buscada e vai retornar as ocorrências da determinada busca
+	public void buscaSimples(String colunaDeDados, String valorParaBusca){
+		switch (colunaDeDados){
+			case StringsUsadas.AREA_TEMATICA:
+				buscaEmDiretotio(valorParaBusca);
+				break;
+			case StringsUsadas.EDITORA:	
+				break;
+			default: 
+				
+				break;
+		}   
+	}
+
+	private void buscaEmDiretotio(String valorParaBusca) {
+	}
+
+	//	Método que vai incluir dados, ela vai pegar a última posição e incrementar, em seguida irá usar os parâmetros para inserir no array da tabela os dados.
 	public void incluirDado(int codigo, String titulo, String autor, String editora, int publicacao, String areaTematica) {
 		ultimaPosicao++;
 		cadastrosBibliograficos[ultimaPosicao][0] = "" + ultimaPosicao;
@@ -38,7 +55,29 @@ public class TabelaListaInvertidaCadBibliografico {
 		cadastrosBibliograficos[ultimaPosicao][5] = "" + publicacao;
 		cadastrosBibliograficos[ultimaPosicao][6] = areaTematica;
 		this.editora.incluirEditora(editora, ultimaPosicao, codigo);
-//		this.areaTematica.incluirArea(areaTematica);
+		this.areaTematica.incluirAreaTematica(areaTematica, ultimaPosicao, codigo);
+	}
+	
+	public void retornaValores(TabelaListaInvertidaCadBibliografico tabelinha){
+		System.out.println();
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.println("Só Boa Leitura");
+		System.out.println("-----------------------------------------------------------------------");
+		NoDiretorio no = (NoDiretorio) tabelinha.getEditora().getDiretorio()[0][1];
+		int[] boas = new int[20];
+		int i = 0;
+		while (no != null){
+			boas[i] = no.getPosicao();
+			no = no.getSucessor();
+			i++;
+		}
+
+		for (int j = 0; j < i; j++) {
+			for (int k = 0; k < 7; k++) {
+				System.out.print(" | " + tabelinha.getCadastrosBibliograficos()[boas[j]][k]);
+			}
+			System.out.println();
+		}
 	}
 
 
